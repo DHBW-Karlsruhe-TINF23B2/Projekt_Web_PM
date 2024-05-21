@@ -10,8 +10,9 @@ function createRoutes(app, db) {
         });
     });
 
-    app.post("/api/create", (req, res) => {
-        console.log(req);
+    app.post("/api/create", function (req, res)  {
+        console.log(req.body);
+        res.json(req.body);
     });
 
 }

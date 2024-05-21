@@ -2,14 +2,14 @@
 const express = require("express");
 const app = express();
 const sqlite = require("sqlite3").verbose();
-const bodyParser = require('body-parser');
+
 
 const port = 8000;
 const db = require("./database").createDatabase(sqlite);
 
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use(require("cors")());
-app.use(require('helmet')());
 
 // Add routes
 require('./routes').createRoutes(app, db);
