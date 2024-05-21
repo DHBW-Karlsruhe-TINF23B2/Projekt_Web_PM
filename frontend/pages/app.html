@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TODO-App</title>
+
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+<h1>Simons Experten Committee</h1>
+<form method="post" action="http://localhost:8000/api/create" enctype="multipart/form-data">
+    <input type="text" name="title" id=name">
+    <input type="text" name="description" id="description">
+    <input type="submit" value="Erstellen">
+</form>
+
+<button id="refreshButton">Refresh</button>
+<div id="todos"></div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

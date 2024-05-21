@@ -5,21 +5,62 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TODO-App</title>
+    <title>ToDo-App</title>
+    <link rel="icon" type="image/x-icon" href="./pictures/logo2.ico">
 
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-    <h1>Super App</h1>
-    <form method="post" action="http://localhost:8000/api/create" enctype="multipart/form-data">
-        <input type="text" name="title" id=name">
-        <input type="text" name="description" id="description">
-        <input type="submit" value="Erstellen">
-    </form>
-
-    <button id="refreshButton">Refresh</button>
-    <div id="todos"></div>
-
-    <script src="./main.js"></script>
+    <header>
+        <img id="logo" src="./pictures/logo2.png" alt="Logo der App">
+    </header>
+    <main>
+        <div id="heading">
+            <h1>ToDo <span>Application</span></h1>
+            <a href="./pages/app.html">Los geht's</a>
+        </div>
+        <details open>
+            <summary>Hier starten die Details:</summary>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+                obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+                nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
+                tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
+                quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
+                sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
+                recusandae alias error harum maxime adipisci amet laborum. Perspiciatis
+                minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit
+                quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur
+                fugiat, temporibus enim commodi iusto libero magni deleniti quod quam
+                consequuntur! Commodi minima excepturi repudiandae velit hic maxime</p>
+        </details>
+        <div id="container">
+            <details open>
+                <summary>Weitere Details:</summary>
+                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+                    obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+                    nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
+                    tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
+                    quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
+                    sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
+                    recusandae alias error harum maxime adipisci amet laborum. Perspiciatis
+                    minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit
+                    quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur
+                    fugiat, temporibus enim commodi iusto libero magni deleniti quod quam
+                    consequuntur! Commodi minima</p>
+            </details>
+            <img src="./pictures/anwendungsbild.jpeg" alt="Stellt ein Papier mit einer ToDo Liste dar">
+        </div>
+    </main>
+    <footer>
+        <p id="dontShow">.</p>
+        <p>© ToDo Application</p>
+        <a id="linkImpressum" href="./pages/impressum.html">Impressum</a>
+    </footer>
 </body>
 </html>
