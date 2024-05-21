@@ -4,6 +4,8 @@ const app = express();
 const sqlite = require("sqlite3").verbose();
 
 
+// THIS IS A TEST
+
 const port = 8000;
 const db = require("./database").createDatabase(sqlite);
 
