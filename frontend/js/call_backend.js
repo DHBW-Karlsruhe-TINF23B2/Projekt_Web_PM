@@ -13,7 +13,7 @@ function createTodo(form) {
 }
 
 function deleteTodo(id) {
-    const jsonData = JSON.parse('{"id": '+id+'}');
+    const jsonData = JSON.stringify(JSON.parse('{"id": '+id+'}'));
     return fetch("http://localhost:8000/api/delete", {
         method: "POST",
         headers: {'Content-Type' : 'application/json'},
@@ -31,7 +31,7 @@ function updateTodo(form) {
 }
 
 function getTodo(id) {
-    const jsonData = JSON.parse('{"id": '+id+'}');
+    const jsonData = JSON.stringify(JSON.parse('{"id": '+id+'}'));
     return fetch("http://localhost:8000/api/get", {
         method: "POST",
         headers: {'Content-Type' : 'application/json'},
