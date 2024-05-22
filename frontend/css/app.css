@@ -1,0 +1,74 @@
+footer a{
+    text-decoration: none;
+    color: white;
+    margin-right: 15px;
+}
+
+main{
+    margin: 0 20px 10px 20px;
+}
+
+main div#todos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    margin: 20px 0 20px 0;
+}
+
+main div#todos div.todo{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 90px 90px;
+    grid-row-gap: 10px;
+    border: 1px solid black;
+    width: 300px;
+    padding: 0;
+    margin: 0;
+    background-color: #F6FFF8;
+}
+
+main h3{
+    margin: 3px 15px 0 5px;
+    hyphens: auto;
+    text-align: justify;
+}
+
+main p{
+    margin: 0 0 0 5px;
+}
+
+.headerDiv{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.titleDiv{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.btnDiv{
+    display: flex;
+    flex-direction: column;
+}
+
+.btnDiv button{
+    padding: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.delBtn{
+    margin: 5px 5px 0 0;
+    background-color: red;
+}
+
+.editBtn{
+    margin: 5px 2px 0 0;
+    background-color: blue;
+    color: white;
+}

@@ -1,8 +1,8 @@
-function fetchDataFromAPI() {
+export function fetchDataFromAPI() {
     return fetch('http://localhost:8000/api/all');
 }
 
-function createTodo(form) {
+export function createTodo(form) {
     const jsonData = JSON.stringify(Object.fromEntries(new FormData(form)));
 
     return fetch("http://localhost:8000/api/create", {
@@ -12,7 +12,7 @@ function createTodo(form) {
     });
 }
 
-function deleteTodo(id) {
+export function deleteTodo(id) {
     const jsonData = JSON.stringify(JSON.parse('{"id": '+id+'}'));
     return fetch("http://localhost:8000/api/delete", {
         method: "POST",
@@ -21,7 +21,7 @@ function deleteTodo(id) {
     });
 }
 
-function updateTodo(form) {
+export function updateTodo(form) {
     const jsonData = JSON.stringify(Object.fromEntries(new FormData(form)));
     return fetch("http://localhost:8000/api/update", {
         method: "POST",
@@ -30,7 +30,7 @@ function updateTodo(form) {
     });
 }
 
-function getTodo(id) {
+export function getTodo(id) {
     const jsonData = JSON.stringify(JSON.parse('{"id": '+id+'}'));
     return fetch("http://localhost:8000/api/get", {
         method: "POST",

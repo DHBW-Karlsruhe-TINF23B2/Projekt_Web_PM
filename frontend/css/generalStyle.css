@@ -1,0 +1,49 @@
+body{
+    background-color: #E7EAEA;
+    margin: 0;
+}
+
+h1{
+    color: black;
+    font-family: "Permanent Marker", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h1 span{
+    color: #A4C3B2;
+}
+
+p{
+    hyphens: auto;
+    text-align: justify;
+}
+
+header #logo{
+    height: 40px;
+    width: auto;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #6B9080;
+    height: 50px;
+    margin: 0;
+}
+
+footer{
+    display: grid;
+    grid-template-columns: 1fr 8fr 1fr;
+    justify-items: center;
+    align-items: center;
+    background-color: #6B9080;
+    height: 50px;
+    color: white;
+    margin: 0;
+}
+
+.invisible{
+    visibility: hidden;
+}

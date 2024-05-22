@@ -1,34 +1,9 @@
-body{
-    background-color: whitesmoke;
-}
-
-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #6B9080;
-    height: 50px;
-}
-
-header #logo{
-    height: 40px;
-    width: auto;
-}
-
 main div#heading{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: 20px;
     padding-right: 10px;
-}
-
-main div#heading h1{
-    color: black;
-}
-
-main div#heading h1 span{
-    color: #A4C3B2;
 }
 
 /*button*/
@@ -44,12 +19,11 @@ main div#heading a{
     width: 200px;
     background-color: #A4C3B2;
     text-decoration: none;
+    margin-right: 10px;
 }
 
 main p{
     padding: 0 20px 0 20px;
-    hyphens: auto;
-    text-align: justify;
 }
 
 main div#container{
@@ -62,31 +36,15 @@ main div#container{
 }
 
 main div#container img{
-    display: flex;
     width: 90%;
     margin: 15px 20px 15px 20px;
     border-radius: 25px;
-    justify-content: center;
-}
-
-footer{
-    display: grid;
-    grid-template-columns: 1fr 8fr 1fr;
-    justify-items: center;
-    align-items: center;
-    background-color: #6B9080;
-    height: 50px;
-    color: white;
 }
 
 footer a{
     text-decoration: none;
     color: white;
     margin-right: 15px;
-}
-
-#dontShow{
-    visibility: hidden;
 }
 
 @media (max-width: 950px) {

@@ -5,22 +5,29 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ToDo-App</title>
-    <link rel="icon" type="image/x-icon" href="./pictures/logo2.ico">
+    <title>Einführung ToDo-App</title>
+    <link rel="icon" type="image/x-icon" href="./img/logo2.ico">
 
-    <link rel="stylesheet" href="./css/styles.css">
+    <!--Stylesheets-->
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/generalStyle.css">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <img id="logo" src="./pictures/logo2.png" alt="Logo der App">
+        <img id="logo" src="./img/logo2.png" alt="Logo der App">
     </header>
     <main>
         <div id="heading">
             <h1>ToDo <span>Application</span></h1>
             <a href="./pages/app.html">Los geht's</a>
         </div>
-        <details open>
-            <summary>Hier starten die Details:</summary>
+        <!--<details open>
+            <summary>Hier starten die Details:</summary> -->
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
                 molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
                 numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
@@ -35,11 +42,9 @@
                 quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur
                 fugiat, temporibus enim commodi iusto libero magni deleniti quod quam
                 consequuntur! Commodi minima excepturi repudiandae velit hic maxime</p>
-        </details>
+        <!--</details>-->
         <div id="container">
-            <details open>
-                <summary>Weitere Details:</summary>
-                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                <p> Weitere Details:Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
                     molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
                     numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
                     optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
@@ -53,14 +58,13 @@
                     quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur
                     fugiat, temporibus enim commodi iusto libero magni deleniti quod quam
                     consequuntur! Commodi minima</p>
-            </details>
-            <img src="./pictures/anwendungsbild.jpeg" alt="Stellt ein Papier mit einer ToDo Liste dar">
+            <img src="./img/anwendungsbild.jpeg" alt="Stellt ein Papier mit einer ToDo Liste dar">
         </div>
     </main>
     <footer>
-        <p id="dontShow">.</p>
+        <p class="invisible">.</p>
         <p>© ToDo Application</p>
-        <a id="linkImpressum" href="./pages/impressum.html">Impressum</a>
+        <a href="./pages/impressum.html">Impressum</a>
     </footer>
 </body>
 </html>

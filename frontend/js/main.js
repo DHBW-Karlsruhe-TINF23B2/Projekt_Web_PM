@@ -1,3 +1,5 @@
+import {deleteTodo} from "./call_backend.js";
+
 const todos = document.querySelector("#todos");
 const refreshBtn = document.querySelector("#refreshButton");
 
@@ -16,20 +18,46 @@ function addDataToSide(todosData) {
         todoDiv.classList.add("todo");
 
         const title = document.createElement("h3");
-        title.classList.add("todo__title");
+        title.classList.add("todoTitle");
         title.innerText = todo["title"];
 
         const description = document.createElement("p");
-        description.classList.add("todo__description");
+        description.classList.add("todoDescription");
         description.innerText = todo["description"];
 
-        todoDiv.append(title);
+        const header = document.createElement("div");
+        header.classList.add("headerDiv");
+
+        const titleDiv = document.createElement("div");
+        titleDiv.classList.add("titleDiv");
+
+        const btnDiv = document.createElement("div");
+        btnDiv.classList.add("btnDiv");
+
+        const delBtn = document.createElement("button");
+        delBtn.classList.add("delBtn");
+        delBtn.innerText="X";
+        delBtn.addEventListener("click", () => deleteTodo(todo["id"])
+            .then(res => console.log(res.status)));
+
+        const editBtn = document.createElement("button");
+        editBtn.classList.add("editBtn");
+        editBtn.innerText="E";
+
+        todoDiv.append(header);
+        titleDiv.append(title);
+        header.append(titleDiv);
+        btnDiv.append(delBtn);
+        btnDiv.append(editBtn);
+        header.append(btnDiv);
+
         todoDiv.append(description);
+
         todos.append(todoDiv);
     }
 }
 
-refreshBtn.addEventListener('click', () => {
+refreshBtn.addEventListener('click', () =>  {
     todos.innerHTML = "";
    fetchDataFromAPI();
 });
