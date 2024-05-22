@@ -26,17 +26,28 @@ main p{
     padding: 0 20px 0 20px;
 }
 
-main div#container{
+main div#gridContainer{
     display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto;
-    grid-auto-rows: 150px 200px;
-    grid-row-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 0;
+    grid-row-gap: 0;
 }
 
-main div#container img{
-    width: 90%;
+#topGrid{
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+#bottomGrid{
+    grid-area: 2 / 1 / 3 / 2;
+}
+
+#rightGrid{
+    grid-area: 1 / 2 / 3 / 3;
+}
+
+main img{
+    width: 95%;
     margin: 15px 20px 15px 20px;
     border-radius: 25px;
 }
@@ -48,8 +59,24 @@ footer a{
 }
 
 @media (max-width: 950px) {
-    main div#container{
+    main div#gridContainer{
+        display: grid;
         grid-template-columns: auto;
-        grid-template-rows: auto auto;
+        grid-template-rows: auto;
+        grid-column-gap: 0;
+        grid-row-gap: 0;
+    }
+    #topGrid{
+        grid-area: 1 / 1 / 2 / 2;
+    }
+
+    #bottomGrid{
+        grid-area: 2 / 1 / 3 / 2;
+    }
+
+    #rightGrid{
+        grid-area: 3 / 1 / 4 / 2;
+        align-self: center;
+        justify-self: center;
     }
 }

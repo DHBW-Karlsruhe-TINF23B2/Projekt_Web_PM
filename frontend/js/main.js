@@ -37,8 +37,9 @@ function addDataToSide(todosData) {
         const delBtn = document.createElement("button");
         delBtn.classList.add("delBtn");
         delBtn.innerText="X";
-        delBtn.addEventListener("click", () => deleteTodo(todo["id"])
+        delBtn.addEventListener("click",() => deleteTodo(todo["id"])
             .then(res => console.log(res.status)));
+        delBtn.addEventListener("click", () => window.location.reload());
 
         const editBtn = document.createElement("button");
         editBtn.classList.add("editBtn");
