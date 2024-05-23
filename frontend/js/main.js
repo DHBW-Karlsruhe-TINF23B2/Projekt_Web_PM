@@ -1,13 +1,10 @@
-import {deleteTodo} from "./call_backend.js";
+import {deleteTodo, createTodo, fetchDataFromAPI} from "./call_backend.js";
 
 const todos = document.querySelector("#todos");
 const refreshBtn = document.querySelector("#refreshButton");
-
-function fetchDataFromAPI() {
-    fetch('http://localhost:8000/api/all')
-        .then(received => received.json())
-        .then(data => addDataToSide(data));
-}
+const creationForm = document.querySelector("#creationForm");
+const creationPopUp= document.querySelector("#creationPopUp");
+const createButton = document.querySelector("#createButton");
 
 
 function addDataToSide(todosData) {
@@ -37,9 +34,13 @@ function addDataToSide(todosData) {
         const delBtn = document.createElement("button");
         delBtn.classList.add("delBtn");
         delBtn.innerText="X";
-        delBtn.addEventListener("click",() => deleteTodo(todo["id"])
-            .then(res => console.log(res.status)));
-        delBtn.addEventListener("click", () => window.location.reload());
+        delBtn.addEventListener("click",() => {
+            deleteTodo(todo["id"]).then(res => {
+                    todos.innerHTML = "";
+                    fetchDataFromAPI().then(received => received.json())
+                        .then(data => addDataToSide(data));
+                });
+        });
 
         const editBtn = document.createElement("button");
         editBtn.classList.add("editBtn");
@@ -58,9 +59,24 @@ function addDataToSide(todosData) {
     }
 }
 
-refreshBtn.addEventListener('click', () =>  {
+creationForm.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    createTodo(e.target);
+    creationPopUp.classList.remove("enabled");
     todos.innerHTML = "";
-   fetchDataFromAPI();
+    fetchDataFromAPI().then(received => received.json())
+        .then(data => addDataToSide(data));
 });
 
-fetchDataFromAPI();
+createButton.addEventListener("click", () =>{
+    creationPopUp.classList.add("enabled");
+});
+
+refreshBtn.addEventListener('click', () =>  {
+    todos.innerHTML = "";
+   fetchDataFromAPI().then(received => received.json())
+       .then(data => addDataToSide(data));
+});
+
+fetchDataFromAPI().then(received => received.json())
+    .then(data => addDataToSide(data));

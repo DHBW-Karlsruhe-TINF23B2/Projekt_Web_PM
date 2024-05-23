@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
+<div id="all">
 <header>
     <img id="logo" src="../img/logo2.png" alt="Logo der App">
 </header>
@@ -26,20 +27,23 @@
         <button id="createButton">Create</button>
         <button id="refreshButton">Refresh</button>
     </div>
-    <!--
-    <form method="post" action="http://localhost:8000/api/create" enctype="multipart/form-data">
-        <input type="text" name="title" id=name">
-        <input type="text" name="description" id="description">
-        <input type="submit" value="Erstellen">
-    </form>
-    -->
     <div id="todos"></div>
+
+    <div id="creationPopUp">
+        <h1>HELLO</h1>
+        <form id="creationForm" method="post" action="http://localhost:8000/api/create">
+            <input type="text" name="title">
+            <input type="text" name="description">
+            <input type="submit">
+        </form>
+    </div>
 </main>
 <footer>
     <a id="start" href="../index.html">To Start</a>
     <p>© ToDo Application</p>
     <a href="../pages/impressum.html">Impressum</a>
 </footer>
+</div>
 
 <script type="module" src="../js/main.js"></script>
 <!--<script src="../js/call_backend.js"></script>-->

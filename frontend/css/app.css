@@ -1,5 +1,37 @@
+#all{
+    display: grid;
+    height: 100vh;
+    grid-template-columns: auto;
+    grid-template-rows: 5% auto 5%;
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    /*position: fixed;*/
+    /*width: 100%;*/
+    grid-row: 1;
+    margin: 0;
+    padding: 0;
+    /*z-index: 99;*/
+}
+
 main{
     margin: 0 20px 10px 20px;
+    grid-row: 2;
+    /*transform: translateY(45px);*/
+}
+
+footer{
+    margin: 0;
+    padding: 0;
+    grid-row: 3;
+    /*position: fixed;*/
+    /*width: 100%;*/
+    /*bottom: 0;*/
 }
 
 main div#head{
@@ -87,12 +119,27 @@ main p{
     border: 1px solid black;
 }
 
-footer#start{
-    margin-left: 10px;
+footer a#start{
+    margin: 0 0 0 10px;
 }
 
 footer a{
     text-decoration: none;
     color: white;
     margin-right: 15px;
+}
+
+#creationPopUp {
+    visibility: hidden;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+#creationPopUp.enabled {
+    visibility: visible;
 }
