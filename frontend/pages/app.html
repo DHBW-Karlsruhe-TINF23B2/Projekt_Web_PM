@@ -31,7 +31,7 @@
         <main>
             <div id="heading">
                 <h1>ToDo <span>List</span></h1>
-                <a id="createButton">Create</a>
+                <a id="createButton">Erstellen</a>
                 <a id="refreshButton">Refresh</a>
             </div>
             <div id="todos"></div>
@@ -39,19 +39,19 @@
             <div id="creationPopUp">
                 <div id="popUpContent">
                     <div id="popUpHeading">
-                        <h2>Neuen Eintrag erstellen</h2>
+                        <h2 id="popUpH2">ToDo erstellen</h2>
                         <button id="closePopUpBtn">X</button>
                     </div>
                     <form id="creationForm" method="post" action="http://localhost:8000/api/create">
                         <input id="toDoId" name="id" style="display: none">
                         <label for="toDoId" style="display: none"></label>
-                        <label for="title">Title:</label>
+                        <label for="title">Titel:</label>
                         <input id="title" name="title" maxlength="98" required placeholder="Titel">
                         <label for="description">Beschreibung:</label>
                         <input id="description" name="description" maxlength="98" required placeholder="Beschreibung">
                         <label for="date">Datum:</label>
                         <input id="date" type="datetime-local">
-                        <input id="submit" type="submit">
+                        <input id="submit" type="submit" value="Erstellen">
                         <br>
                     </form>
                 </div>

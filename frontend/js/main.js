@@ -39,7 +39,7 @@ function addDataToSide(todosData) {
 
         const delBtn = document.createElement("button");
         delBtn.classList.add("delBtnToDo");
-        delBtn.innerText="X";
+        delBtn.innerHTML="<img id='deleteIcon' src='../img/trashCan_white.png' alt='edit' style='width: 80%'>";
         delBtn.addEventListener("click",() => {
             deleteTodo(todo["id"]).then(res => {
                     refreshTodos();
@@ -48,14 +48,17 @@ function addDataToSide(todosData) {
 
         const editBtn = document.createElement("button");
         editBtn.classList.add("editBtnToDo");
-        editBtn.innerText="E";
+        editBtn.innerHTML="<img id='editIcon' src='../img/edit_white.png' alt='edit'>";
         editBtn.addEventListener("click", (e) =>{
             e.preventDefault();
             creationForm.action = "http://localhost:8000/api/update";
+            document.getElementById("popUpH2").innerText = "ToDo updaten"
             document.getElementById("toDoId").value = todo["id"];
             document.getElementById("title").value = todo["title"];
             document.getElementById("description").value = todo["description"];
+            document.getElementById("submit").value = "Updaten";
             creationPopUp.classList.add("enabled");
+            document.getElementById("title").focus();
         });
 
         todoDiv.append(header);
@@ -95,6 +98,9 @@ createButton.addEventListener("click", () =>{
     creationForm.reset();
     creationForm.action = "http://localhost:8000/api/create";
     creationPopUp.classList.add("enabled");
+    document.getElementById("popUpH2").innerText = "ToDo erstellen"
+    document.getElementById("submit").value = "Erstellen";
+    document.getElementById("title").focus();
 });
 
 refreshBtn.addEventListener('click', () =>  {

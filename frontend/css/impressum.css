@@ -42,13 +42,3 @@ main div#infoText ul li{
 footer{
     min-height: 50px;
 }
-
-footer a{
-    text-decoration: none;
-    color: white;
-    margin-right: 15px;
-}
-
-footer a#start{
-    margin: 0 0 0 10px;
-}
