@@ -1,0 +1,54 @@
+body{
+    min-height: 100vh;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+main div#heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px 0 20px;
+}
+
+main div#infoText{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 0;
+    grid-row-gap: 0;
+
+    padding: 0 10px 0 20px;
+}
+
+main div#infoText h3{
+    font-family: "Permanent Marker", cursive;
+    margin: 18px 0 8px 0;
+}
+main div#infoText ul{
+    margin: 0 0 10px 0;
+}
+
+main div#infoText ul li{
+    margin: 0 0 2px 0;
+}
+
+footer{
+    min-height: 50px;
+}
+
+footer a{
+    text-decoration: none;
+    color: white;
+    margin-right: 15px;
+}
+
+footer a#start{
+    margin: 0 0 0 10px;
+}

@@ -1,25 +1,24 @@
-main div#heading{
+body{
+    display: flex;
+    flex-direction: column;
+
+    min-height: 100vh;
+    margin: 0;
+}
+
+main{
+    flex: 1;
+}
+
+footer{
+    min-height: 50px;
+}
+
+main div#heading {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 20px;
-    padding-right: 10px;
-}
-
-/*button*/
-main div#heading a{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1px 6px;
-    border: 1px outset buttonborder;
-    border-radius: 3px;
-    color: black;
-    height: 30px;
-    width: 200px;
-    background-color: #A4C3B2;
-    text-decoration: none;
-    margin-right: 10px;
+    padding: 0 10px 0 20px;
 }
 
 main p{
@@ -28,7 +27,8 @@ main p{
 
 main div#gridContainer{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    height: 100%;
+    grid-template-columns: repeat(2, auto);
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 0;
     grid-row-gap: 0;

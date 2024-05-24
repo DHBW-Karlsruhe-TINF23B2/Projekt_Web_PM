@@ -5,6 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>ToDo-App</title>
     <link rel="icon" type="image/x-icon" href="../img/logo2.ico">
 
@@ -17,35 +18,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
-<div id="all">
-<header>
-    <img id="logo" src="../img/logo2.png" alt="Logo der App">
-</header>
-<main>
-    <div id="head">
-        <h1>ToDo <span>List</span></h1>
-        <button id="createButton">Create</button>
-        <button id="refreshButton">Refresh</button>
-    </div>
-    <div id="todos"></div>
+    <div id="appContainer">
+        <header>
+            <div id="icon">
+                <a href="app.html"><img id="logo" src="../img/logo2.png" alt="Logo der App"></a>
+            </div>
+            <div id="linkBar">
+                <a href="../index.html">Start</a>
+                <a href="impressum.html">Impressum</a>
+            </div>
+        </header>
+        <main>
+            <div id="heading">
+                <h1>ToDo <span>List</span></h1>
+                <a id="createButton">Create</a>
+                <a id="refreshButton">Refresh</a>
+            </div>
+            <div id="todos"></div>
 
-    <div id="creationPopUp">
-        <h1>HELLO</h1>
-        <form id="creationForm" method="post" action="http://localhost:8000/api/create">
-            <input type="text" name="title">
-            <input type="text" name="description">
-            <input type="submit">
-        </form>
+            <div id="creationPopUp">
+                <div id="popUpContent">
+                    <div id="popUpHeading">
+                        <h2>Neuen Eintrag erstellen</h2>
+                        <button id="closePopUpBtn">X</button>
+                    </div>
+                    <form id="creationForm" method="post" action="http://localhost:8000/api/create">
+                        <input id="toDoId" name="id" style="display: none">
+                        <label for="toDoId" style="display: none"></label>
+                        <label for="title">Title:</label>
+                        <input id="title" name="title" maxlength="98" required placeholder="Titel">
+                        <label for="description">Beschreibung:</label>
+                        <input id="description" name="description" maxlength="98" required placeholder="Beschreibung">
+                        <label for="date">Datum:</label>
+                        <input id="date" type="datetime-local">
+                        <input id="submit" type="submit">
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>© ToDo Application</p>
+        </footer>
     </div>
-</main>
-<footer>
-    <a id="start" href="../index.html">To Start</a>
-    <p>© ToDo Application</p>
-    <a href="../pages/impressum.html">Impressum</a>
-</footer>
-</div>
 
-<script type="module" src="../js/main.js"></script>
-<!--<script src="../js/call_backend.js"></script>-->
+    <script type="module" src="../js/main.js"></script>
 </body>
 </html>

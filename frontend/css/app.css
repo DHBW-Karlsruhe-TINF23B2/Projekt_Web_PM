@@ -1,55 +1,23 @@
-#all{
-    display: grid;
-    height: 100vh;
-    grid-template-columns: auto;
-    grid-template-rows: 5% auto 5%;
-    grid-column-gap: 0;
-    grid-row-gap: 0;
-    gap: 0;
+#appContainer{
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
     margin: 0;
-    padding: 0;
-}
-
-header{
-    /*position: fixed;*/
-    /*width: 100%;*/
-    grid-row: 1;
-    margin: 0;
-    padding: 0;
-    /*z-index: 99;*/
 }
 
 main{
-    margin: 0 20px 10px 20px;
-    grid-row: 2;
-    /*transform: translateY(45px);*/
+    flex: 1;
 }
 
-footer{
-    margin: 0;
-    padding: 0;
-    grid-row: 3;
-    /*position: fixed;*/
-    /*width: 100%;*/
-    /*bottom: 0;*/
-}
-
-main div#head{
+main div#heading{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 5px 10px 10px 20px;
 }
 
-main div#head button#refreshButton{
-    height: 20px;
-    width: 100px;
-    margin-right: 15px;
-}
-
-main div#head button#createButton{
-    height: 20px;
-    width: 100px;
-    margin-right: 40px;
+main div a{
+    cursor: pointer;
 }
 
 main div#todos{
@@ -72,64 +40,18 @@ main div#todos div.todo{
     background-color: #F6FFF8;
 }
 
-main h3{
+main h2{
     margin: 3px 15px 0 5px;
     hyphens: auto;
     text-align: justify;
 }
 
-main p{
-    margin: 0 5px 0 5px;
+main h3{
+    hyphens: auto;
+    text-align: justify;
 }
 
-.headerDiv{
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-
-.titleDiv{
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-}
-
-.btnDiv{
-    display: flex;
-    flex-direction: column;
-}
-
-.btnDiv button{
-    padding: 0;
-    width: 20px;
-    height: 20px;
-}
-
-.delBtn{
-    margin: 5px 5px 0 0;
-    background-color: red;
-    border: 1px solid black;
-}
-
-.editBtn{
-    margin: 5px 2px 0 0;
-    background-color: blue;
-    color: white;
-    border: 1px solid black;
-}
-
-footer a#start{
-    margin: 0 0 0 10px;
-}
-
-footer a{
-    text-decoration: none;
-    color: white;
-    margin-right: 15px;
-}
-
-#creationPopUp {
+main #creationPopUp {
     visibility: hidden;
     position: fixed;
     z-index: 100;
@@ -138,8 +60,85 @@ footer a{
     width: 100vw;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#creationPopUp.enabled {
+main #creationPopUp.enabled {
     visibility: visible;
+}
+
+main #popUpContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+    background-color: #E7EAEA;
+    width: 50%;
+    border-radius: 5px;
+    padding: 0 15px 0 15px;
+}
+
+main #popUpHeading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+main form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 25px;
+    width: 85%;
+    gap: 10px;
+}
+
+main form input#submit{
+    width: 25%;
+}
+
+main .headerDivToDo{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+main .titleDivToDo{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin: 0 10px 0 5px;
+}
+
+main .todoDescription{
+    margin: 0 10px 0 5px;
+}
+
+main .btnDivToDo{
+    display: flex;
+    flex-direction: column;
+}
+
+main .btnDivToDo button{
+    padding: 0;
+    width: 20px;
+    height: 20px;
+}
+
+main .delBtnToDo{
+    margin: 5px 5px 0 0;
+    background-color: red;
+    border: 1px solid black;
+}
+
+main .editBtnToDo{
+    margin: 5px 2px 0 0;
+    background-color: blue;
+    color: white;
+    border: 1px solid black;
 }

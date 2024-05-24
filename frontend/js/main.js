@@ -1,11 +1,17 @@
-import {deleteTodo, createTodo, fetchDataFromAPI} from "./call_backend.js";
+import {deleteTodo, createTodo, fetchDataFromAPI, updateTodo, getTodo} from "./call_backend.js";
 
 const todos = document.querySelector("#todos");
 const refreshBtn = document.querySelector("#refreshButton");
 const creationForm = document.querySelector("#creationForm");
 const creationPopUp= document.querySelector("#creationPopUp");
 const createButton = document.querySelector("#createButton");
+const closePopUpBtn = document.querySelector("#closePopUpBtn");
 
+function refreshTodos(){
+    todos.innerHTML = "";
+    fetchDataFromAPI().then(received => received.json())
+        .then(data => addDataToSide(data));
+}
 
 function addDataToSide(todosData) {
     for(const num in todosData) {
@@ -23,28 +29,34 @@ function addDataToSide(todosData) {
         description.innerText = todo["description"];
 
         const header = document.createElement("div");
-        header.classList.add("headerDiv");
+        header.classList.add("headerDivToDo");
 
         const titleDiv = document.createElement("div");
-        titleDiv.classList.add("titleDiv");
+        titleDiv.classList.add("titleDivToDo");
 
         const btnDiv = document.createElement("div");
-        btnDiv.classList.add("btnDiv");
+        btnDiv.classList.add("btnDivToDo");
 
         const delBtn = document.createElement("button");
-        delBtn.classList.add("delBtn");
+        delBtn.classList.add("delBtnToDo");
         delBtn.innerText="X";
         delBtn.addEventListener("click",() => {
             deleteTodo(todo["id"]).then(res => {
-                    todos.innerHTML = "";
-                    fetchDataFromAPI().then(received => received.json())
-                        .then(data => addDataToSide(data));
+                    refreshTodos();
                 });
         });
 
         const editBtn = document.createElement("button");
-        editBtn.classList.add("editBtn");
+        editBtn.classList.add("editBtnToDo");
         editBtn.innerText="E";
+        editBtn.addEventListener("click", (e) =>{
+            e.preventDefault();
+            creationForm.action = "http://localhost:8000/api/update";
+            document.getElementById("toDoId").value = todo["id"];
+            document.getElementById("title").value = todo["title"];
+            document.getElementById("description").value = todo["description"];
+            creationPopUp.classList.add("enabled");
+        });
 
         todoDiv.append(header);
         titleDiv.append(title);
@@ -61,22 +73,32 @@ function addDataToSide(todosData) {
 
 creationForm.addEventListener('submit', (e)=>{
     e.preventDefault();
-    createTodo(e.target);
+    if (creationForm.action === "http://localhost:8000/api/create") {
+        createTodo(creationForm).then(r => {
+            refreshTodos();
+            creationForm.reset();
+        });
+    } else if (creationForm.action === "http://localhost:8000/api/update"){
+        updateTodo(creationForm).then(r => {
+            refreshTodos();
+            creationForm.reset();
+        });
+    }
     creationPopUp.classList.remove("enabled");
-    todos.innerHTML = "";
-    fetchDataFromAPI().then(received => received.json())
-        .then(data => addDataToSide(data));
 });
 
+closePopUpBtn.addEventListener('click', ()=>{
+    creationPopUp.classList.remove("enabled");
+})
+
 createButton.addEventListener("click", () =>{
+    creationForm.reset();
+    creationForm.action = "http://localhost:8000/api/create";
     creationPopUp.classList.add("enabled");
 });
 
 refreshBtn.addEventListener('click', () =>  {
-    todos.innerHTML = "";
-   fetchDataFromAPI().then(received => received.json())
-       .then(data => addDataToSide(data));
+    refreshTodos();
 });
 
-fetchDataFromAPI().then(received => received.json())
-    .then(data => addDataToSide(data));
+refreshTodos();
