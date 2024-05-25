@@ -6,6 +6,7 @@ const creationForm = document.querySelector("#creationForm");
 const creationPopUp= document.querySelector("#creationPopUp");
 const createButton = document.querySelector("#createButton");
 const closePopUpBtn = document.querySelector("#closePopUpBtn");
+const radioBtnNo = document.querySelector("#nein");
 
 function refreshTodos(){
     todos.innerHTML = "";
@@ -19,6 +20,19 @@ function addDataToSide(todosData) {
 
         const todoDiv = document.createElement("div");
         todoDiv.classList.add("todo");
+
+        const checkboxDiv = document.createElement("div");
+        checkboxDiv.classList.add("checkboxDiv");
+
+        const checkBox = document.createElement("input");
+        checkBox.type = "checkbox";
+        checkBox.id = todo["id"];
+        checkBox.name = todo["name"];
+        checkBox.classList.add("checkbox");
+        checkBox.addEventListener("change", () => {
+            todoDiv.classList.toggle("checked");
+            // update todo
+        })
 
         const title = document.createElement("h3");
         title.classList.add("todoTitle");
@@ -51,8 +65,9 @@ function addDataToSide(todosData) {
         editBtn.innerHTML="<img id='editIcon' src='../img/edit_white.png' alt='edit'>";
         editBtn.addEventListener("click", (e) =>{
             e.preventDefault();
+            // get/respect status of radio button
             creationForm.action = "http://localhost:8000/api/update";
-            document.getElementById("popUpH2").innerText = "ToDo updaten"
+            document.getElementById("popUpH2").innerHTML = "ToDo <span>updaten</span>"
             document.getElementById("toDoId").value = todo["id"];
             document.getElementById("title").value = todo["title"];
             document.getElementById("description").value = todo["description"];
@@ -61,6 +76,8 @@ function addDataToSide(todosData) {
             document.getElementById("title").focus();
         });
 
+        todoDiv.append(checkboxDiv);
+        checkboxDiv.append(checkBox);
         todoDiv.append(header);
         titleDiv.append(title);
         header.append(titleDiv);
@@ -96,9 +113,10 @@ closePopUpBtn.addEventListener('click', ()=>{
 
 createButton.addEventListener("click", () =>{
     creationForm.reset();
+    radioBtnNo.checked = true;
     creationForm.action = "http://localhost:8000/api/create";
     creationPopUp.classList.add("enabled");
-    document.getElementById("popUpH2").innerText = "ToDo erstellen"
+    document.getElementById("popUpH2").innerHTML = "ToDo <span>erstellen</span>"
     document.getElementById("submit").value = "Erstellen";
     document.getElementById("title").focus();
 });

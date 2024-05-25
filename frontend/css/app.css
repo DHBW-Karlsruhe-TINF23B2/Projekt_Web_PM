@@ -24,18 +24,6 @@ main div#todos{
     margin: 20px 0 20px 0;
 }
 
-main div#todos div.todo{
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 90px 90px;
-    grid-row-gap: 10px;
-    border: 1px solid black;
-    width: 300px;
-    padding: 0;
-    margin: 0;
-    background-color: #F6FFF8;
-}
-
 main h2{
     margin: 3px 15px 0 5px;
     hyphens: auto;
@@ -92,6 +80,19 @@ main #closePopUpBtn{
     color: white;
 }
 
+main #fieldset{
+    border-radius: 3px;
+}
+
+main #ja{
+    margin-right: 25px;
+    accent-color: #6B9080;
+}
+
+main #nein{
+    accent-color: #6B9080;
+}
+
 main #date{
     cursor: pointer;
 }
@@ -116,7 +117,37 @@ main form input#submit{
     border-radius: 3px;
 }
 
+main .checked{
+    opacity: 0.25;
+}
+
+main div#todos div.todo{
+    display: grid;
+    grid-template-columns: 25px auto;
+    grid-template-rows: 90px 90px;
+    grid-row-gap: 10px;
+    grid-column-gap: 5px;
+    border: 1px solid black;
+    width: 300px;
+    padding: 0;
+    margin: 0;
+    background-color: #F6FFF8;
+}
+
+main .checkboxDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1;
+    grid-row: 1 / 3;
+}
+
+main .checkbox{
+    accent-color: #6B9080;
+}
+
 main .headerDivToDo{
+    grid-column: 2;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -131,6 +162,7 @@ main .titleDivToDo{
 }
 
 main .todoDescription{
+    grid-column: 2;
     margin: 0 10px 0 5px;
 }
 
@@ -165,7 +197,7 @@ main .delBtnToDo{
 
 main .editBtnToDo{
     margin: 5px 2px 0 0;
-    background-color: blue;
+    background-color: #6B9080;
     color: white;
     border: 1px solid black;
     cursor: pointer;

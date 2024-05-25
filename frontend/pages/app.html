@@ -40,7 +40,7 @@
             <div id="creationPopUp">
                 <div id="popUpContent">
                     <div id="popUpHeading">
-                        <h2 id="popUpH2">ToDo erstellen</h2>
+                        <h2 id="popUpH2"></h2>
                         <button id="closePopUpBtn">X</button>
                     </div>
                     <form id="creationForm" method="post" action="http://localhost:8000/api/create">
@@ -50,6 +50,13 @@
                         <input id="title" name="title" maxlength="98" required placeholder="Titel">
                         <label for="description">Beschreibung:</label>
                         <input id="description" name="description" maxlength="98" required placeholder="Beschreibung">
+                        <fieldset id="fieldset" name="erledigt">
+                            <legend>Erledigt:</legend>
+                            <label for="ja">Ja</label>
+                            <input id="ja" type="radio" name="checked" value="Ja">
+                            <label for="nein">Nein</label>
+                            <input id="nein" type="radio" name="checked" value="Nein">
+                        </fieldset>
                         <label for="date">Datum:</label>
                         <input id="date" type="datetime-local">
                         <input id="submit" type="submit" value="Erstellen">

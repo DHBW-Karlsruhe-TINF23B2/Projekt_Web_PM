@@ -25,6 +25,10 @@ h2{
     font-style: normal;
 }
 
+h2 span{
+    color: #A4C3B2;
+}
+
 p{
     hyphens: auto;
     text-align: justify;
