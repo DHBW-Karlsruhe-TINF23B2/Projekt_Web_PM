@@ -1,4 +1,5 @@
 // Define all routes here
+
 function createRoutes(app, db) {
     app.get("/api/all", (req, res) => {
         db.all("SELECT * FROM todos", function (err, rows) {
@@ -16,14 +17,21 @@ function createRoutes(app, db) {
 
         const title = req.body.title;
         const description = req.body.description;
+        const done = req.body.done === "Ja";
+        const deadline = req.body.deadline;
 
-        if(!title || !description) {
-            const response = '{ "Status": "Failure", "Message": "Title und oder description fehlt" }';
+        console.log(title);
+        console.log(description);
+        console.log(done);
+        console.log(deadline);
+
+        if(!title || !description || !deadline) {
+            const response = '{ "Status": "Failure", "Message": "Informationen fehlen." }';
             res.status(406).json(JSON.parse(response));
             return;
         }
 
-        db.run("INSERT INTO todos (title, description) VALUES ('" + title + "', '" + description + "')", function (err, rows) {
+        db.run("INSERT INTO todos (title, description, done, deadline) VALUES ('" + title + "', '" + description + "', " + done + ", '" + deadline + "')", function (err, rows) {
             if(err) {
                 console.log("Database error while creating new todo. Error: " + err);
                 res.sendStatus(500);
@@ -55,13 +63,21 @@ function createRoutes(app, db) {
         const id = req.body.id;
         const title = req.body.title;
         const description = req.body.description;
-        if(!id||!title||!description){
-            const response = '{ "Status": "Failure", "Message": "Title, description und oder id fehlt" }';
+        const done = req.body.done === "Ja";
+        const deadline = req.body.deadline;
+
+        if(!id||!title||!description||!deadline){
+            const response = '{ "Status": "Failure", "Message": "Informationen fehlen." }';
             res.status(406).json(JSON.parse(response));
             return;
         }
 
-        db.run("UPDATE todos SET title='" + title + "', description='" + description + "' WHERE id = " + id, function (err, rows) {
+        console.log(title);
+        console.log(description);
+        console.log(done);
+        console.log(deadline);
+
+        db.run("UPDATE todos SET title='" + title + "', description='" + description + "', done=" + done + ", deadline='" + deadline + "' WHERE id = " + id, function (err, rows) {
             if(err) {
                 console.log("Database error while updating todo. Error: " + err);
                 res.sendStatus(406);

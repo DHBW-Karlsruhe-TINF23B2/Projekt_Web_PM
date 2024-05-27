@@ -1,4 +1,11 @@
-import {deleteTodo, createTodo, fetchDataFromAPI, updateTodo, getTodo} from "./call_backend.js";
+import {
+    deleteTodo,
+    createTodo,
+    fetchDataFromAPI,
+    updateTodo,
+    getTodo,
+    updateTodoFromJson
+} from "./call_backend.js";
 
 const todos = document.querySelector("#todos");
 const refreshBtn = document.querySelector("#refreshButton");
@@ -7,6 +14,7 @@ const creationPopUp= document.querySelector("#creationPopUp");
 const createButton = document.querySelector("#createButton");
 const closePopUpBtn = document.querySelector("#closePopUpBtn");
 const radioBtnNo = document.querySelector("#nein");
+const radioBtnYes = document.querySelector("#ja");
 
 function refreshTodos(){
     todos.innerHTML = "";
@@ -29,10 +37,13 @@ function addDataToSide(todosData) {
         checkBox.id = todo["id"];
         checkBox.name = todo["name"];
         checkBox.classList.add("checkbox");
-        checkBox.addEventListener("change", () => {
-            todoDiv.classList.toggle("checked");
-            // update todo
-        })
+        checkBox.checked = todo["done"] === 1;
+        if(todo["done"] === 1) todoDiv.classList.toggle("checked");
+        checkBox.addEventListener("change", (e) => {
+            const done = checkBox.checked ? "Ja" : "Nein";
+            const json = '{"id":"' + todo["id"] + '", "title": "' + todo["title"] + '", "description": "' + todo["description"] + '", "done": "' + done + '", "deadline": "' + todo["deadline"] + '"}';
+            updateTodoFromJson(json).then(res=> refreshTodos());
+        });
 
         const title = document.createElement("h3");
         title.classList.add("todoTitle");
@@ -41,6 +52,10 @@ function addDataToSide(todosData) {
         const description = document.createElement("p");
         description.classList.add("todoDescription");
         description.innerText = todo["description"];
+
+        const deadline = document.createElement("p");
+        deadline.classList.add("todoDeadline");
+        deadline.innerText = todo["deadline"];
 
         const header = document.createElement("div");
         header.classList.add("headerDivToDo");
@@ -65,12 +80,17 @@ function addDataToSide(todosData) {
         editBtn.innerHTML="<img id='editIcon' src='../img/edit_white.png' alt='edit'>";
         editBtn.addEventListener("click", (e) =>{
             e.preventDefault();
-            // get/respect status of radio button
+            if(todo["done"] === 1) {
+                radioBtnYes.checked = true;
+            } else {
+                radioBtnNo.checked = true;
+            }
             creationForm.action = "http://localhost:8000/api/update";
             document.getElementById("popUpH2").innerHTML = "ToDo <span>updaten</span>"
             document.getElementById("toDoId").value = todo["id"];
             document.getElementById("title").value = todo["title"];
             document.getElementById("description").value = todo["description"];
+            document.getElementById("deadline").value = todo["deadline"];
             document.getElementById("submit").value = "Updaten";
             creationPopUp.classList.add("enabled");
             document.getElementById("title").focus();
@@ -86,6 +106,7 @@ function addDataToSide(todosData) {
         header.append(btnDiv);
 
         todoDiv.append(description);
+        todoDiv.append(deadline);
 
         todos.append(todoDiv);
     }

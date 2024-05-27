@@ -30,6 +30,16 @@ export function updateTodo(form) {
     });
 }
 
+export function updateTodoFromJson(json) {
+    const jsonData = JSON.stringify(JSON.parse(json));
+
+    return fetch("http://localhost:8000/api/update", {
+        method: "POST",
+        headers: {'Content-Type' : 'application/json'},
+        body: jsonData
+    });
+}
+
 export function getTodo(id) {
     const jsonData = JSON.stringify(JSON.parse('{"id": '+id+'}'));
     return fetch("http://localhost:8000/api/get", {
