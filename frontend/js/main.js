@@ -16,10 +16,41 @@ const closePopUpBtn = document.querySelector("#closePopUpBtn");
 const radioBtnNo = document.querySelector("#nein");
 const radioBtnYes = document.querySelector("#ja");
 
+Date.prototype.addHours= function(h){
+    this.setHours(this.getHours()+(h+2));
+    return this;
+}
+
 function refreshTodos(){
     todos.innerHTML = "";
     fetchDataFromAPI().then(received => received.json())
         .then(data => addDataToSide(data));
+}
+
+function createDeadlineSpan(date, todo, deadline) {
+    let currentDate = new Date();
+    let infoTime = currentDate.toLocaleString("de-DE", {hour:'2-digit', minute:'2-digit'});
+    currentDate = currentDate.toISOString().slice(0, 16);
+    if (date.toISOString().slice(0, 16) < currentDate && todo["done"] === 0) {
+        const option = {weekday: 'short', day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit'};
+        const formatDate = date.toLocaleDateString("de-DE", option);
+        deadline.innerHTML = "<span id='todoDate' class='past'>" + "Überfällig seit: " + formatDate.slice(0,5) +" "+ formatDate.slice(5,13)+ " um " + formatDate.slice(14) + "</span>";
+    } else if (date.toISOString().slice(0, 16) == currentDate && todo["done"] === 0){
+        deadline.innerHTML = "<span id='todoDate' class='now'>" + infoTime + " - ToDo ist jetzt fällig!" + "</span>";
+    } else if (todo["done"] === 1) {
+        deadline.innerHTML = "<span id='todoDate' class='done'>" + "Erledigt" + "</span>";
+    } else {
+        const option = {
+            weekday: 'short',
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        };
+        const formatDate = date.toLocaleTimeString("de-DE", option);
+        deadline.innerHTML = "<span id='todoDate'>" + "Fällig am: " + formatDate + "</span>";
+    }
 }
 
 function addDataToSide(todosData) {
@@ -53,9 +84,10 @@ function addDataToSide(todosData) {
         description.classList.add("todoDescription");
         description.innerText = todo["description"];
 
-        const deadline = document.createElement("p");
+        const deadline = document.createElement("div");
         deadline.classList.add("todoDeadline");
-        deadline.innerText = todo["deadline"];
+        const date = new Date(todo["deadline"]);
+        createDeadlineSpan(date, todo, deadline);
 
         const header = document.createElement("div");
         header.classList.add("headerDivToDo");
@@ -130,7 +162,7 @@ creationForm.addEventListener('submit', (e)=>{
 
 closePopUpBtn.addEventListener('click', ()=>{
     creationPopUp.classList.remove("enabled");
-})
+});
 
 createButton.addEventListener("click", () =>{
     creationForm.reset();
@@ -139,6 +171,8 @@ createButton.addEventListener("click", () =>{
     creationPopUp.classList.add("enabled");
     document.getElementById("popUpH2").innerHTML = "ToDo <span>erstellen</span>"
     document.getElementById("submit").value = "Erstellen";
+    let date = new Date().addHours(3);
+    document.getElementById("deadline").value = date.toISOString().slice(0,16);
     document.getElementById("title").focus();
 });
 
@@ -146,4 +180,14 @@ refreshBtn.addEventListener('click', () =>  {
     refreshTodos();
 });
 
+function refreshTodosEveryMin() {
+    let time = new Date(),
+        secondsRemaining = (60 - time.getSeconds()) * 1000;
+
+    setTimeout(function () {
+        setInterval(refreshTodos, 60000);
+    }, secondsRemaining);
+}
+
 refreshTodos();
+refreshTodosEveryMin();

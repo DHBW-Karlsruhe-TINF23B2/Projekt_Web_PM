@@ -124,11 +124,12 @@ main .checked{
 main div#todos div.todo{
     display: grid;
     grid-template-columns: 25px auto;
-    grid-template-rows: 90px 90px;
+    grid-template-rows: auto auto auto;
     grid-row-gap: 10px;
     grid-column-gap: 5px;
     border: 1px solid black;
-    width: 300px;
+    border-radius: 3px;
+    width: 320px;
     padding: 0;
     margin: 0;
     background-color: #F6FFF8;
@@ -139,7 +140,7 @@ main .checkboxDiv{
     justify-content: center;
     align-items: center;
     grid-column: 1;
-    grid-row: 1 / 3;
+    grid-row: 2;
 }
 
 main .checkbox{
@@ -164,12 +165,50 @@ main .titleDivToDo{
 
 main .todoDescription{
     grid-column: 2;
+    grid-row: 3;
     margin: 0 10px 0 5px;
+}
+
+main .todoTitle{
+    color: black;
+    font-family: "Permanent Marker", cursive;
+    font-style: normal;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+main .todoDeadline{
+    grid-column: 2;
+    grid-row: 2;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 10px 0 5px;
+}
+
+main #todoDate{
+    font-weight: bold;
+    color: #6B9080;
+}
+
+main #todoDate.past{
+    color: red;
+    font-weight: bold;
+}
+
+main #todoDate.now{
+    color: darkorange;
+    font-weight: bold;
+}
+
+main #todoDate.done{
+    font-weight: bold;
 }
 
 main .btnDivToDo{
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 
 main .btnDivToDo button{
