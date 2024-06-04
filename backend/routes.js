@@ -20,11 +20,6 @@ function createRoutes(app, db) {
         const done = req.body.done === "Ja";
         const deadline = req.body.deadline;
 
-        console.log(title);
-        console.log(description);
-        console.log(done);
-        console.log(deadline);
-
         if(!title || !description || !deadline) {
             const response = '{ "Status": "Failure", "Message": "Informationen fehlen." }';
             res.status(406).json(JSON.parse(response));
@@ -72,11 +67,6 @@ function createRoutes(app, db) {
             return;
         }
 
-        console.log(title);
-        console.log(description);
-        console.log(done);
-        console.log(deadline);
-
         db.run("UPDATE todos SET title='" + title + "', description='" + description + "', done=" + done + ", deadline='" + deadline + "' WHERE id = " + id, function (err, rows) {
             if(err) {
                 console.log("Database error while updating todo. Error: " + err);
@@ -105,7 +95,6 @@ function createRoutes(app, db) {
     });
 
 }
-
 
 // Export modules
 module.exports = {
