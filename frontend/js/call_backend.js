@@ -1,3 +1,5 @@
+/* This script is to send data to the backend. */
+
 export function fetchDataFromAPI() {
     return fetch('http://localhost:8000/api/all');
 }

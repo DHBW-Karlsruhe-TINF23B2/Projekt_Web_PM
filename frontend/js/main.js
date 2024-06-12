@@ -3,7 +3,6 @@ import {
     createTodo,
     fetchDataFromAPI,
     updateTodo,
-    getTodo,
     updateTodoFromJson
 } from "./call_backend.js";
 
@@ -15,6 +14,9 @@ const createButton = document.querySelector("#createButton");
 const closePopUpBtn = document.querySelector("#closePopUpBtn");
 const radioBtnNo = document.querySelector("#nein");
 const radioBtnYes = document.querySelector("#ja");
+const todoLoader = document.querySelector("#todoLoader");
+const actionInfo = document.querySelector("#actionInfo");
+const submitForm = document.querySelector("#submit");
 
 Date.prototype.addHours= function(h){
     this.setHours(this.getHours()+(h+2));
@@ -22,9 +24,17 @@ Date.prototype.addHours= function(h){
 }
 
 function refreshTodos(){
-    todos.innerHTML = "";
+    todos.innerHTML = "<p class='fetch__trying'>Aktualisiere TODOs...</p>";
+    todoLoader.classList.remove("todo__loader--hidden");
     fetchDataFromAPI().then(received => received.json())
-        .then(data => addDataToSide(data));
+        .then(data => {
+            todos.innerHTML = "";
+            todoLoader.classList.add("todo__loader--hidden");
+            addDataToSide(data);
+        }).catch((reason) => {
+            todoLoader.classList.add("todo__loader--hidden");
+            todos.innerHTML = "<div class='fetch__error'><p class='fetch__error__title'>Ein unerwarteter Fehler ist aufgetreten.</p><p class='fetch__error__reason'>" + reason+ "</p></div>";
+    });
 }
 
 function createDeadlineSpan(date, todo, deadline) {
@@ -146,22 +156,63 @@ function addDataToSide(todosData) {
 
 creationForm.addEventListener('submit', (e)=>{
     e.preventDefault();
+
+    submitForm.value = "Loading...";
+    submitForm.disabled = true;
+
     if (creationForm.action === "http://localhost:8000/api/create") {
         createTodo(creationForm).then(r => {
-            refreshTodos();
-            creationForm.reset();
+
+            if(r.status === 200) {
+                refreshTodos();
+                creationForm.reset();
+                submitForm.value = "Erstellen";
+                submitForm.disabled = false;
+                actionInfo.innerText = "Neues Todo wurde angelegt.";
+                actionInfo.classList.remove("action__info--hidden");
+            } else {
+                r.json().then(value => {
+                    submitForm.value = "Erstellen";
+                    submitForm.disabled = false;
+                    actionInfo.innerHTML = "Fehler beim anlegen! <br>" + value.message;
+                    actionInfo.classList.remove("action__info--hidden");
+                });
+            }
+        }).catch(reason => {
+            submitForm.value = "Erstellen";
+            submitForm.disabled = false;
+            actionInfo.innerHTML = "Fehler beim anlegen! <br>" + reason.message;
+            actionInfo.classList.remove("action__info--hidden");
         });
-    } else if (creationForm.action === "http://localhost:8000/api/update"){
+    } else if (creationForm.action === "http://localhost:8000/api/update") {
+
         updateTodo(creationForm).then(r => {
-            refreshTodos();
-            creationForm.reset();
-        });
+            if(r.status === 200) {
+                refreshTodos();
+                submitForm.value = "Updaten";
+                submitForm.disabled = false;
+                actionInfo.innerText = "Todo wurde aktualisiert.";
+                actionInfo.classList.remove("action__info--hidden");
+            } else {
+                r.json().then(value => {
+                    submitForm.value = "Updaten";
+                    submitForm.disabled = false;
+                    actionInfo.innerHTML = "Fehler beim aktualisieren! <br>" + value.message;
+                    actionInfo.classList.remove("action__info--hidden");
+                });
+            }
+        }).catch(reason => {
+            submitForm.value = "Updaten";
+            submitForm.disabled = false;
+            actionInfo.innerHTML = "Fehler beim aktualisieren! <br>" + reason.message;
+            actionInfo.classList.remove("action__info--hidden");
+        });;
     }
-    creationPopUp.classList.remove("enabled");
 });
 
 closePopUpBtn.addEventListener('click', ()=>{
     creationPopUp.classList.remove("enabled");
+    actionInfo.classList.add("action__info--hidden");
 });
 
 createButton.addEventListener("click", () =>{

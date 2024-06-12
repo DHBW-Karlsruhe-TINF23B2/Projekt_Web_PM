@@ -1,3 +1,10 @@
+/*
+    TODO-APP Backend:
+        -> Routes
+        -> Database
+ */
+
+
 // Add required packages
 const express = require("express");
 const app = express();
@@ -14,4 +21,7 @@ app.use(require("cors")());
 require('./routes').createRoutes(app, db);
 
 // Start server
+console.log("Trying to run todo backend server on port " + port + "...");
 app.listen(port, () => console.log("Server started on port " + port + "."));
+
+

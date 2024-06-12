@@ -50,7 +50,11 @@ footer a{
     margin-right: 15px;
 }
 
-@media (max-width: 950px) {
+#app__button {
+    margin-right: 15px;
+}
+
+@media screen and (max-width: 950px) {
     main div#gridContainer{
         display: grid;
         grid-template-columns: auto;
@@ -70,5 +74,11 @@ footer a{
         grid-area: 3 / 1 / 4 / 2;
         align-self: center;
         justify-self: center;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #app__button {
+        padding: 5px !important;
     }
 }

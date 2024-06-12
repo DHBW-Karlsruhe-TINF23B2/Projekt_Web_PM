@@ -2,10 +2,10 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>ToDo-App</title>
     <link rel="icon" type="image/x-icon" href="../img/logo2.ico">
 
@@ -32,10 +32,20 @@
         <main>
             <div id="heading">
                 <h1>ToDo <span>List</span></h1>
-                <a id="createButton">Erstellen</a>
-                <a id="refreshButton">Refresh</a>
+                <div class="todo__buttons">
+                    <a class="styled__button" id="createButton">Erstellen</a>
+                    <a class="styled__button" id="refreshButton">Refresh</a>
+                </div>
             </div>
-            <div id="todos"></div>
+
+            <div id="todoLoader" class="todo__loader">
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </div>
+
+            <div id="todos">
+            </div>
 
             <div id="creationPopUp">
                 <div id="popUpContent">
@@ -43,6 +53,8 @@
                         <h2 id="popUpH2"></h2>
                         <button id="closePopUpBtn">X</button>
                     </div>
+                    <p id="actionInfo" class="action__info action__info--hidden"></p>
+
                     <form id="creationForm" method="post" action="http://localhost:8000/api/create">
                         <input id="toDoId" name="id" style="display: none">
                         <label for="toDoId" style="display: none"></label>

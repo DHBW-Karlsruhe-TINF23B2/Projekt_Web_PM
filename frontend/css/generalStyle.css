@@ -50,6 +50,8 @@ header{
 #linkBar a{
     color: white;
     text-decoration: none;
+    width: 100px;
+    text-align: center;
 }
 
 header div#icon{
@@ -70,8 +72,45 @@ header div#linkBar{
     width: 100%;
 }
 
+
+.styled__button {
+    position: relative;
+    border: 2px solid #A4C3B2;
+    color: #A4C3B2;
+    padding: 15px;
+    border-radius: 10px;
+    text-decoration: none;
+    overflow: hidden;
+    z-index: 1;
+    transition: all .5s;
+    text-align: center;
+    width: fit-content;
+}
+
+.styled__button::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+    transform-origin: left;
+    width: 0;
+    height: 100%;
+    background-color: #A4C3B2;
+    z-index: -1;
+    transition: all .5s;
+}
+
+.styled__button:is(:hover, :focus)::after {
+    width: 100%;
+}
+
+.styled__button:is(:hover, :focus) {
+    color: white;
+}
+
+
 /*button*/
-main div#heading a{
+/*main div#heading a{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,7 +123,7 @@ main div#heading a{
     background-color: #A4C3B2;
     text-decoration: none;
     margin-right: 10px;
-}
+}*/
 
 footer{
     display: flex;
