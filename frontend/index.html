@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Einführung ToDo-App</title>
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content= "width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./img/logo2.ico">
 
     <!--Stylesheets-->
@@ -36,38 +35,20 @@
             <a id="app__button" class="styled__button" href="./pages/app.html">Los geht's</a>
         </div>
         <div id="gridContainer">
-        <!--<details open>
-            <summary>Hier starten die Details:</summary> -->
-            <p id="topGrid">Grundlegende Daten: Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-                obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-                nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-                tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-                quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
-                sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-                recusandae alias error harum maxime adipisci amet laborum. Perspiciatis
-                minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit
-                quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur
-                fugiat, temporibus enim commodi iusto libero magni deleniti quod quam
-                consequuntur! Commodi minima excepturi repudiandae velit hic maxime</p>
-        <!--</details>-->
-            <p id="bottomGrid"> Weitere Details: Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-                obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-                nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-                tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-                quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
-                sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-                recusandae alias error harum maxime adipisci amet laborum. Perspiciatis
-                minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit
-                quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur
-                fugiat, temporibus enim commodi iusto libero magni deleniti quod quam
-                consequuntur! Commodi minima</p>
-            <img id="rightGrid" src="./img/anwendungsbild.jpeg" alt="Stellt ein Papier mit einer ToDo Liste dar">
+            <p id="generalInfo">Unser Projekt ist eine minimalistische TODO-App, welche über einen Browser verwendet werden kann. Dazu haben wir unser Projekt in ein Backend und ein Frontend aufgeteilt. Dabei wurde für das Backend eine API-Schnittstelle programmiert. Das Frontend-Team hat eine Webseite, welche die API-Schnittstelle anspricht, erstellt. Unsere TODO-App soll einfach gehalten werden. Grundlegende Funktionen sind dabei die Darstellung aller erstellten TODOs, das Erstellen von neuen TODOs oder das Bearbeiten sowie das Löschen von vorhandenen TODOs. Ein TODO hat dabei einen Title, eine Beschreibung, die Information, ob das TODO bereits erledigt ist, sowie ein Datum wann dieses fällig ist. Dieses Fälligkeitsdatum soll nur dann angezeigt werden, wenn das TODO nicht erledigt ist.</p>
+
+            <details open id="backendInfo">
+                <summary>Backend:</summary>
+                <p> Das Backend stellt einen eigenständigen Service dar, welcher eine API-Schnittstelle bereitstellt. Über diese API können TODOs in der Datenbank angelegt, gelöscht, angepasst und abgerufen werden. Das Backend übernimmt dazu alle nötigen Aktionen und Validierungen der eingehenden Daten. Es teilt dem Sendenden mit, ob seine Aktion erfolgreich war oder was schiefgelaufen ist. Durch diese Schnittstelle ist es möglich Plattformunabhängig auf die Daten zuzugreifen. Diese werden im JSON Format übermittelt, sodass ein beliebiger Endpunkt zur Darstellung verwendet werden kann.</p>
+            </details>
+
+            <details open id="frontEndInfo">
+                <summary>Frontend:</summary>
+                <p>Das Frontend übernimmt die Aufgabe alle gespeicherten TODOs darzustellen, sowie eine benutzerfreundliche Möglichkeit zur Bearbeitung und Erstellung der TODOs anzubieten. Hierzu werden entsprechend dem AJAX-Modell die vom Backend übermittelten JSON Daten mit Javascript ausgewertet und als HTML-Code der Webseite dynamisch hinzugefügt. Hiermit gehen die typischen Verteile einer dynamischen Webseite einher, wodurch ein erneutes Laden der Webseite beim Hinzufügen, Ändern oder Löschen von TODOs nicht erforderlich ist. Darüber hinaus ist die Webseite responsive, sodass das Layout dynamisch auf die Größe des Browsers reagiert.
+                </p>
+            </details>
+
+            <img id="titleImage" src="./img/anwendungsbild.jpeg" alt="Stellt ein Papier mit einer ToDo Liste dar">
         </div>
     </main>
     <footer>

@@ -2,7 +2,7 @@
 
 function createRoutes(app, db) {
     app.get("/api/all", (req, res) => {
-        db.all("SELECT * FROM todos", function (err, rows) {
+        db.all("SELECT * FROM todos order by done ASC, deadline ASC", function (err, rows) {
             if (err) {
                 console.log("{-} [GET /api/all] Database error while getting all todos. Error: " + err);
                 res.sendStatus(500);
