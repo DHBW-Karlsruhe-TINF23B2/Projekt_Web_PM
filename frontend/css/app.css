@@ -209,22 +209,22 @@ main .todoDeadline{
     margin: 0 10px 0 5px;
 }
 
-main #todoDate{
+main .todoDate{
     font-weight: bold;
     color: #6B9080;
 }
 
-main #todoDate.past{
+main .todoDate.past{
     color: red;
     font-weight: bold;
 }
 
-main #todoDate.now{
+main .todoDate.now{
     color: darkorange;
     font-weight: bold;
 }
 
-main #todoDate.done{
+main .todoDate.done{
     font-weight: bold;
 }
 
@@ -248,7 +248,7 @@ main .delBtnToDo{
     border-radius: 3px;
 }
 
-#deleteIcon{
+main .deleteIcon{
     width: 80%;
     display: flex;
     justify-content: center;
@@ -267,7 +267,7 @@ main .editBtnToDo{
     border-radius: 3px;
 }
 
-#editIcon{
+main .editIcon{
     width: 80%;
     display: flex;
     justify-content: center;

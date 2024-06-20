@@ -44,11 +44,11 @@ function createDeadlineSpan(date, todo, deadline) {
     if (date.toISOString().slice(0, 16) < currentDate && todo["done"] === 0) {
         const option = {weekday: 'short', day: '2-digit', month: '2-digit', year: '2-digit', hour: '2-digit', minute: '2-digit'};
         const formatDate = date.toLocaleDateString("de-DE", option);
-        deadline.innerHTML = "<span id='todoDate' class='past'>" + "Überfällig seit: " + formatDate.slice(0,5) +" "+ formatDate.slice(5,13)+ " um " + formatDate.slice(14) + "</span>";
+        deadline.innerHTML = "<span class='past todoDate'>" + "Überfällig seit: " + formatDate.slice(0,5) +" "+ formatDate.slice(5,13)+ " um " + formatDate.slice(14) + "</span>";
     } else if (date.toISOString().slice(0, 16) == currentDate && todo["done"] === 0){
-        deadline.innerHTML = "<span id='todoDate' class='now'>" + infoTime + " - ToDo ist jetzt fällig!" + "</span>";
+        deadline.innerHTML = "<span class='now todoDate'>" + infoTime + " - ToDo ist jetzt fällig!" + "</span>";
     } else if (todo["done"] === 1) {
-        deadline.innerHTML = "<span id='todoDate' class='done'>" + "Erledigt" + "</span>";
+        deadline.innerHTML = "<span class='done todoDate'>" + "Erledigt" + "</span>";
     } else {
         const option = {
             weekday: 'short',
@@ -59,7 +59,7 @@ function createDeadlineSpan(date, todo, deadline) {
             minute: '2-digit'
         };
         const formatDate = date.toLocaleTimeString("de-DE", option);
-        deadline.innerHTML = "<span id='todoDate'>" + "Fällig am: " + formatDate + "</span>";
+        deadline.innerHTML = "<span class='todoDate'>" + "Fällig am: " + formatDate + "</span>";
     }
 }
 
@@ -110,7 +110,7 @@ function addDataToSide(todosData) {
 
         const delBtn = document.createElement("button");
         delBtn.classList.add("delBtnToDo");
-        delBtn.innerHTML="<img id='deleteIcon' src='../img/trashCan_white.png' alt='edit' style='width: 80%'>";
+        delBtn.innerHTML="<img class='deleteIcon' src='../img/trashCan_white.png' alt='edit' style='width: 80%'>";
         delBtn.addEventListener("click",() => {
             deleteTodo(todo["id"]).then(res => {
                     refreshTodos();
@@ -119,7 +119,7 @@ function addDataToSide(todosData) {
 
         const editBtn = document.createElement("button");
         editBtn.classList.add("editBtnToDo");
-        editBtn.innerHTML="<img id='editIcon' src='../img/edit_white.png' alt='edit'>";
+        editBtn.innerHTML="<img class='editIcon' src='../img/edit_white.png' alt='edit'>";
         editBtn.addEventListener("click", (e) =>{
             e.preventDefault();
             if(todo["done"] === 1) {
