@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo-App</title>
+    <link rel="icon" type="image/x-icon" href="http://localhost:63342/Projekt_Web_PM/frontend/img/logo2.ico">
+
+    <link rel="stylesheet" href="../css/generalStyle.css">
+    <link rel="stylesheet" href="../css/app.css">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="./ToDo-App_files/css2" rel="stylesheet">
+</head>
+<body>
+    <div id="appContainer">
+        <header>
+            <div id="icon">
+                <a href="http://localhost:63342/Projekt_Web_PM/frontend/pages/app.html">
+                    <img id="logo" src="./ToDo-App_files/logo2.png" alt="Logo der App">
+                </a>
+            </div>
+            <div id="linkBar">
+                <a href="http://localhost:63342/Projekt_Web_PM/frontend/index.html">Start</a>
+                <a href="http://localhost:63342/Projekt_Web_PM/frontend/pages/app.html">App</a>
+                <a href="http://localhost:63342/Projekt_Web_PM/frontend/pages/impressum.html">Impressum</a>
+            </div>
+        </header>
+        <main>
+            <div id="heading">
+                <h1>ToDo <span>List</span></h1>
+                <div class="todo__buttons">
+                    <a class="styled__button" id="createButton">Erstellen</a>
+                    <a class="styled__button" id="refreshButton">Refresh</a>
+                </div>
+            </div>
+
+            <div id="todoLoader" class="todo__loader todo__loader--hidden">
+                <div class="square"></div>
+                <div class="square"></div>
+                <div class="square"></div>
+            </div>
+
+            <div id="todos">
+                <div class="todo">
+                    <div class="checkboxDiv"><input type="checkbox" id="26" name="undefined" class="checkbox"></div>
+                    <div class="headerDivToDo">
+                        <div class="titleDivToDo"><h3 class="todoTitle">Projekt-Code optimieren</h3></div>
+                        <div class="btnDivToDo">
+                            <button class="delBtnToDo">
+                                <img class="deleteIcon"
+                                     src="./ToDo-App_files/trashCan_white.png"
+                                     alt="edit"
+                                     style="width: 80%">
+                            </button>
+                            <button class="editBtnToDo">
+                                <img class="editIcon"
+                                     src="./ToDo-App_files/edit_white.png"
+                                     alt="edit">
+                            </button>
+                        </div>
+                    </div>
+                    <p class="todoDescription">
+                        Der Frontend- und Backendcode soll optimiert werden und im Nu Checker überprüft werden.
+                    </p>
+                    <div class="todoDeadline">
+                        <span class="past todoDate">Überfällig seit: Di.,  18.06.24 um  23:59</span>
+                    </div>
+                </div>
+                <div class="todo">
+                    <div class="checkboxDiv"><input type="checkbox" id="27" name="undefined" class="checkbox"></div>
+                    <div class="headerDivToDo">
+                        <div class="titleDivToDo">
+                            <h3 class="todoTitle">Projektmanagement Dokumente fertigstellen</h3>
+                        </div>
+                        <div class="btnDivToDo">
+                            <button class="delBtnToDo">
+                                <img class="deleteIcon"
+                                     src="./ToDo-App_files/trashCan_white.png"
+                                     alt="edit" style="width: 80%">
+                            </button>
+                            <button class="editBtnToDo">
+                                <img class="editIcon"
+                                     src="./ToDo-App_files/edit_white.png"
+                                     alt="edit">
+                            </button>
+                        </div>
+                    </div>
+                    <p class="todoDescription">
+                        Alle Dokumente für Projektmanagement sollen erstellt werde und mit allen überprüft werden.
+                    </p>
+                    <div class="todoDeadline">
+                        <span class="past todoDate">Überfällig seit: Di.,  25.06.24 um  23:59</span>
+                    </div>
+                </div>
+                <div class="todo">
+                    <div class="checkboxDiv">
+                        <input type="checkbox" id="28" name="undefined" class="checkbox">
+                    </div>
+                    <div class="headerDivToDo">
+                        <div class="titleDivToDo">
+                            <h3 class="todoTitle">Projektpräsentation vorbereiten</h3>
+                        </div>
+                        <div class="btnDivToDo">
+                            <button class="delBtnToDo">
+                                <img class="deleteIcon"
+                                     src="./ToDo-App_files/trashCan_white.png"
+                                     alt="edit"
+                                     style="width: 80%">
+                            </button>
+                            <button class="editBtnToDo">
+                                <img class="editIcon"
+                                     src="./ToDo-App_files/edit_white.png"
+                                     alt="edit"></button>
+                        </div>
+                    </div>
+                    <p class="todoDescription">Die Präsentation planen und erstellen. Alle Üben.</p>
+                    <div class="todoDeadline">
+                        <span class="past todoDate">Überfällig seit: Mi.,  26.06.24 um  23:59</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="creationPopUp">
+                <div id="popUpContent">
+                    <div id="popUpHeading">
+                        <h2 id="popUpH2">No data present</h2>
+                        <button id="closePopUpBtn">X</button>
+                    </div>
+                    <p id="actionInfo" class="action__info action__info--hidden"></p>
+
+                    <form id="creationForm" method="post" action="http://localhost:8000/api/create">
+                        <input id="toDoId" name="id" style="display: none">
+                        <label for="toDoId" style="display: none"></label>
+                        <label for="title">Titel:</label>
+                        <input id="title" name="title" maxlength="98" required="" placeholder="Titel">
+                        <label for="description">Beschreibung:</label>
+                        <input id="description" name="description" maxlength="98" required="" placeholder="Beschreibung">
+                        <fieldset id="fieldset" name="erledigt">
+                            <legend>Erledigt:</legend>
+                            <label for="ja">Ja</label>
+                            <input id="ja" type="radio" name="done" value="Ja">
+                            <label for="nein">Nein</label>
+                            <input id="nein" type="radio" name="done" value="Nein">
+                        </fieldset>
+                        <label for="deadline">Fälligkeit:</label>
+                        <input id="deadline" type="datetime-local" name="deadline">
+                        <input id="submit" type="submit" value="Erstellen">
+                        <br>
+                    </form>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>© ToDo Application</p>
+        </footer>
+    </div>
+    <script type="module" src="./ToDo-App_files/main.js.Herunterladen"></script>
+</body>
+</html>
